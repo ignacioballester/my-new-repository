@@ -1,0 +1,26 @@
+name: production
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  ENVIRONMENT: production
+  DEPLOYMENT_URL: https://production.example.com
+  
+# Environment configuration for production
+variables:
+  REPLICAS: "3"
+  MEMORY_LIMIT: "512Mi"
+  CPU_LIMIT: "500m"
+  
+# Protection rules for production environment
+protection_rules:
+  required_reviewers:
+    - ignacioballester
+  wait_timer: 15
+  allowed_branches:
+    - main
